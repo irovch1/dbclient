@@ -1,7 +1,7 @@
 'use strict';
 
 const Joi = require('@hapi/joi');
-const elasticsearch = require('elasticsearch');
+const {client, config} = require('esclient')
 
 // Schema Configuration
 // dbclient.statFrequency: populated by defaults if not overridden
@@ -27,7 +27,6 @@ module.exports = {
     }
 
     // now verify that the index exists
-    const esclient = new elasticsearch.Client(config.esclient);
 
     // callback that throws an error if the index doesn't exist
     const existsCallback = (error, exists) => {
@@ -41,6 +40,6 @@ module.exports = {
     };
 
     // can also be done with promises but it's hard to test mixing the paradigms
-    esclient.indices.exists({ index: config.schema.indexName }, existsCallback);
+    client.indices.exists({ index: config.schema.indexName }, existsCallback);
   }
 };
