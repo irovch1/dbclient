@@ -35,6 +35,7 @@ function wrapper( client, parent_logger ){
     // perform bulk operation
     client.bulk( { body: payload }, function( err, resp ){
 
+      resp = resp.body
       // major error
       if( err ){
         logger.error( 'esclient error', err );
