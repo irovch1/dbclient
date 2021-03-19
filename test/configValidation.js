@@ -311,10 +311,8 @@ module.exports.tests.validate = function(test, common) {
 
     t.throws(() => {
       proxyquire('../src/configValidation', {
-        'elasticsearch': {
-          Client: function() {
-            return { indices: { exists: (indexName, cb) => { cb(false, false); } } };
-          }
+        'esclient': function(config) {
+          return { indices: { exists: (indexName, cb) => { cb(false, false); } } };
         }
       }).validate(config);
 

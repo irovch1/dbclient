@@ -1,7 +1,6 @@
 'use strict';
 
 const Joi = require('@hapi/joi');
-const {client, config} = require('esclient');
 
 // Schema Configuration
 // dbclient.statFrequency: populated by defaults if not overridden
@@ -39,6 +38,7 @@ module.exports = {
       }
     };
 
+    const client = require('esclient')(config);
     // can also be done with promises but it's hard to test mixing the paradigms
     client.indices.exists({ index: config.schema.indexName }, existsCallback);
   }
