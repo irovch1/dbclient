@@ -1,7 +1,7 @@
 'use strict';
 
 const Joi = require('@hapi/joi');
-const {client, config} = require('esclient')
+const {client, config} = require('esclient');
 
 // Schema Configuration
 // dbclient.statFrequency: populated by defaults if not overridden
