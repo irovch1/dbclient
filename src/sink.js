@@ -4,12 +4,12 @@ var through = require('through2'),
     JSONStream = require('JSONStream'),
     fs = require('fs');
 
-const dumpTo = process.env['DUMP_TO']
+const dumpTo = process.env.DUMP_TO;
 
 function streamFactory( opts ){
   if(dumpTo) {
     const stringifier = JSONStream.stringify('', '\n', '');
-    stringifier.pipe(fs.createWriteStream(dumpTo, {flags: 'a'}))
+    stringifier.pipe(fs.createWriteStream(dumpTo, {flags: 'a'}));
     return stringifier;
   }
 
