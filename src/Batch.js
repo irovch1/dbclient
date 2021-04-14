@@ -2,7 +2,7 @@
 var Task = require('./Task');
 
 var defaults = {
-  batchSize: 500 // maximum records per batch
+  batchSize: 100 // maximum records per batch
 };
 
 function Batch( opts ){
